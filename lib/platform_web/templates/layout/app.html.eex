@@ -13,14 +13,21 @@
 
   <body>
     <div class="container">
+      
       <header class="header">
         <nav role="navigation">
           <ul class="nav nav-pills pull-right">
-            <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
+            <%= if @current_user do %>
+              <p class="small">Signed in as <strong><%= @current_user.username %></strong></p>
+              <%= link "Sign Out", to: player_session_path(@conn, :delete, @current_user), method: "delete", class: "btn btn-sm btn-danger" %>
+            <% else %>
+              <%= link "Sign up", to: player_path(@conn, :new), class: "btn btn-sm btn-success" %>
+              <%= link "Sign in", to: player_session_path(@conn, :new), class: "btn btn-sm btn-primary" %>
+            <% end %>
           </ul>
         </nav>
         <span class="logo"></span>
-      </header>
+      </header> 
 
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
