@@ -19,3 +19,10 @@ import "phoenix_html"
 // paths "./socket" or full ones "web/static/js/socket".
 
 // import socket from "./socket"
+import Elm from "./elm"
+const elmContainer = document.querySelector("#elm-container");
+const platformer = document.querySelector("#platformer");
+
+if (elmContainer) Elm.Main.embed(elmContainer);
+
+if (platformer) Elm.Platformer.embed(platformer);

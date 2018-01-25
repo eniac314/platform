@@ -1,4 +1,1 @@
-<div class="container">
-<a class="btn btn-success" href="/players/new">Create Player Account</a>
-<a class="btn btn-info" href="/players">List All Players</a>
-</div>
+<div id="elm-container"></div>

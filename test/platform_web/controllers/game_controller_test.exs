@@ -4,10 +4,9 @@ defmodule PlatformWeb.GameControllerTest do
   alias Platform.Products
   alias Platform.Products.Game
 
-  @create_attrs %{description: "some description", featured: true, thumbnail: "some thumbnail", title: "some title"}
-  @update_attrs %{description: "some updated description", featured: false, thumbnail: "some updated thumbnail", title: "some updated title"}
-  @invalid_attrs %{description: nil, featured: nil, thumbnail: nil, title: nil}
-
+  @create_attrs %{description: "some description", featured: true, thumbnail: "some thumbnail", title: "some title", slug: "some slug"}
+  @update_attrs %{description: "some updated description", featured: false, thumbnail: "some updated thumbnail", title: "some updated title", slug: "some updated slug"}
+  @invalid_attrs %{description: nil, featured: nil, thumbnail: nil, title: nil, slug: nil}
   def fixture(:game) do
     {:ok, game} = Products.create_game(@create_attrs)
     game
@@ -35,7 +34,8 @@ defmodule PlatformWeb.GameControllerTest do
         "description" => "some description",
         "featured" => true,
         "thumbnail" => "some thumbnail",
-        "title" => "some title"}
+        "title" => "some title",
+        "slug" => "some slug"}
     end
 
     test "renders errors when data is invalid", %{conn: conn} do
@@ -57,7 +57,8 @@ defmodule PlatformWeb.GameControllerTest do
         "description" => "some updated description",
         "featured" => false,
         "thumbnail" => "some updated thumbnail",
-        "title" => "some updated title"}
+        "title" => "some updated title",
+        "slug" => "some updated slug"}
     end
 
     test "renders errors when data is invalid", %{conn: conn, game: game} do

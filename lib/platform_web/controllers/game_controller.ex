@@ -24,6 +24,11 @@ defmodule PlatformWeb.GameController do
     game = Products.get_game!(id)
     render(conn, "show.json", game: game)
   end
+  
+  def play(conn, %{"slug" => slug}) do
+    game = Products.get_game_by_slug!(slug)
+    render(conn, "show.html", game: game)
+  end
 
   def update(conn, %{"id" => id, "game" => game_params}) do
     game = Products.get_game!(id)
